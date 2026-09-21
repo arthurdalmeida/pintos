@@ -159,3 +159,105 @@ Execution of 'alarm-negative' complete.
 [?2004lexit
 
 Script done on 2026-09-21 19:03:53-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-09-21 20:22:29-03:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="94" LINES="15"]
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ date
+[?2004lMon Sep 21 20:22:31 -03 2026
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ o[Kpwd
+[?2004l/home/arthuralmeida/InfrSW/pintos-fork/src/threads
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ [7mtouch ../../devices/timer.c[27mtouch ../../devices/timer.c
+[?2004ltouch: cannot touch '../../devices/timer.c': No such file or directory
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ make
+[?2004lcd build && make all
+make[1]: Entering directory '/home/arthuralmeida/InfrSW/pintos-fork/src/threads/build'
+i386-elf-gcc -c ../../devices/timer.c -o devices/timer.o -m32 -g -msoft-float -O0 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers  -MMD -MF devices/timer.d
+i386-elf-ld -melf_i386 -T threads/kernel.lds.s -o kernel.o threads/start.o threads/init.o threads/thread.o threads/switch.o threads/interrupt.o threads/intr-stubs.o threads/synch.o threads/palloc.o threads/malloc.o devices/pit.o devices/timer.o devices/kbd.o devices/vga.o devices/serial.o devices/block.o devices/partition.o devices/ide.o devices/input.o devices/intq.o devices/rtc.o devices/shutdown.o devices/speaker.o lib/debug.o lib/random.o lib/stdio.o lib/stdlib.o lib/string.o lib/arithmetic.o lib/ustar.o lib/kernel/debug.o lib/kernel/list.o lib/kernel/bitmap.o lib/kernel/hash.o lib/kernel/console.o tests/threads/tests.o tests/threads/alarm-wait.o tests/threads/alarm-simultaneous.o tests/threads/alarm-priority.o tests/threads/alarm-zero.o tests/threads/alarm-negative.o tests/threads/priority-change.o tests/threads/priority-donate-one.o tests/threads/priority-donate-multiple.o tests/threads/priority-donate-multiple2.o tests/threads/priority-donate-nest.o tests/threads/priority-donate-sema.o tests/threads/priority-donate-lower.o tests/threads/priority-fifo.o tests/threads/priority-preempt.o tests/threads/priority-sema.o tests/threads/priority-condvar.o tests/threads/priority-donate-chain.o tests/threads/mlfqs-load-1.o tests/threads/mlfqs-load-60.o tests/threads/mlfqs-load-avg.o tests/threads/mlfqs-recent-1.o tests/threads/mlfqs-fair.o tests/threads/mlfqs-block.o
+i386-elf-objdump -S kernel.o > kernel.asm
+i386-elf-nm -n kernel.o > kernel.sym
+i386-elf-objcopy -R .note -R .comment -S kernel.o kernel.bin
+make[1]: Leaving directory '/home/arthuralmeida/InfrSW/pintos-fork/src/threads/build'
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ [7mpintos -- run alarm-zero[27m
+[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cpintos -- run alarm-zero
+[A
+[?2004lqemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/3Gibq4jCdu.dsk -m 4 -net none -serial stdio
+Pintos hda1
+Loading...........
+Kernel command line: run alarm-zero
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  104,755,200 loops/s.
+Boot complete.
+Executing 'alarm-zero':
+(alarm-zero) begin
+(alarm-zero) PASS
+(alarm-zero) end
+Execution of 'alarm-zero' complete.
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ [7mpintos -- run alarm-negative[27mpintos -- run alarm-negative
+[?2004lqemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/okfqTboXEM.dsk -m 4 -net none -serial stdio
+Pintos hda1
+Loading...........
+Kernel command line: run alarm-negative
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  104,755,200 loops/s.
+Boot complete.
+Executing 'alarm-negative':
+(alarm-negative) begin
+(alarm-negative) PASS
+(alarm-negative) end
+Execution of 'alarm-negative' complete.
+[?2004h]0;arthuralmeida@tucano-maquina: ~/InfrSW/pintos-fork/src/threads[01;32marthuralmeida@tucano-maquina[00m:[01;34m~/InfrSW/pintos-fork/src/threads[00m$ [7mpintos -- run alarm-multiple[27mpintos -- run alarm-multiple
+[?2004lqemu-system-i386 -device isa-debug-exit -drive format=raw,media=disk,index=0,file=/tmp/uMGqyUGHhR.dsk -m 4 -net none -serial stdio
+Pintos hda1
+Loading...........
+Kernel command line: run alarm-multiple
+Pintos booting with 3,968 kB RAM...
+367 pages available in kernel pool.
+367 pages available in user pool.
+Calibrating timer...  104,755,200 loops/s.
+Boot complete.
+Executing 'alarm-multiple':
+(alarm-multiple) begin
+(alarm-multiple) Creating 5 threads to sleep 7 times each.
+(alarm-multiple) Thread 0 sleeps 10 ticks each time,
+(alarm-multiple) thread 1 sleeps 20 ticks each time, and so on.
+(alarm-multiple) If successful, product of iteration count and
+(alarm-multiple) sleep duration will appear in nondescending order.
+(alarm-multiple) thread 0: duration=10, iteration=1, product=10
+(alarm-multiple) thread 0: duration=10, iteration=2, product=20
+(alarm-multiple) thread 1: duration=20, iteration=1, product=20
+(alarm-multiple) thread 2: duration=30, iteration=1, product=30
+(alarm-multiple) thread 0: duration=10, iteration=3, product=30
+(alarm-multiple) thread 3: duration=40, iteration=1, product=40
+(alarm-multiple) thread 0: duration=10, iteration=4, product=40
+(alarm-multiple) thread 1: duration=20, iteration=2, product=40
+(alarm-multiple) thread 4: duration=50, iteration=1, product=50
+(alarm-multiple) thread 0: duration=10, iteration=5, product=50
+(alarm-multiple) thread 1: duration=20, iteration=3, product=60
+(alarm-multiple) thread 2: duration=30, iteration=2, product=60
+(alarm-multiple) thread 0: duration=10, iteration=6, product=60
+(alarm-multiple) thread 0: duration=10, iteration=7, product=70
+(alarm-multiple) thread 1: duration=20, iteration=4, product=80
+(alarm-multiple) thread 3: duration=40, iteration=2, product=80
+(alarm-multiple) thread 2: duration=30, iteration=3, product=90
+(alarm-multiple) thread 4: duration=50, iteration=2, product=100
+(alarm-multiple) thread 1: duration=20, iteration=5, product=100
+(alarm-multiple) thread 1: duration=20, iteration=6, product=120
+(alarm-multiple) thread 2: duration=30, iteration=4, product=120
+(alarm-multiple) thread 3: duration=40, iteration=3, product=120
+(alarm-multiple) thread 1: duration=20, iteration=7, product=140
+(alarm-multiple) thread 4: duration=50, iteration=3, product=150
+(alarm-multiple) thread 2: duration=30, iteration=5, product=150
+(alarm-multiple) thread 3: duration=40, iteration=4, product=160
+(alarm-multiple) thread 2: duration=30, iteration=6, product=180
+(alarm-multiple) thread 3: duration=40, iteration=5, product=200
+(alarm-multiple) thread 4: duration=50, iteration=4, product=200
+(alarm-multiple) thread 2: duration=30, iteration=7, product=210
+(alarm-multiple) thread 3: duration=40, iteration=6, product=240
+(alarm-multiple) thread 4: duration=50, iteration=5, product=250
+(alarm-multiple) thread 3: duration=40, iteration=7, product=280
+(alarm-multiple) thread 4: duration=50, iteration=6, product=300
+(alarm-m
