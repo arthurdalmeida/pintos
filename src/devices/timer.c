@@ -190,6 +190,7 @@ timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   thread_tick ();
+  wake_sleeping_threads();
 }
 
 /* Returns true if LOOPS iterations waits for more than one timer
@@ -261,4 +262,20 @@ real_time_delay (int64_t num, int32_t denom)
      the possibility of overflow. */
   ASSERT (denom % 1000 == 0);
   busy_wait (loops_per_tick * num / 1000 * TIMER_FREQ / (denom / 1000)); 
+}
+
+static void wake_sleeping_threads(void){
+  struct list_elem *e = list_begin(&sleeping_list);
+
+  while (e != list_end(&sleeping_list)){
+    struct sleeper *s = list_entry(e, struct sleeper, elem);
+
+    if (s->wakeup_time <= ticks){
+      sema_up (&s->sema);
+      e = list_remove(e);
+    }
+    else{
+      e = list_next(e);
+    }
+  }
 }
