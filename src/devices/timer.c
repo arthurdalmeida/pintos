@@ -104,6 +104,7 @@ timer_sleep (int64_t ticks)
   enum intr_level old_level;
 
   ASSERT (intr_get_level() == INTR_ON);
+  if (ticks <= 0) return;
 
   s.wakeup_time = start +ticks;
   sema_init (&s.sema, 0);
@@ -271,8 +272,8 @@ static void wake_sleeping_threads(void){
     struct sleeper *s = list_entry(e, struct sleeper, elem);
 
     if (s->wakeup_time <= ticks){
-      sema_up (&s->sema);
       e = list_remove(e);
+      sema_up (&s->sema);
     }
     else{
       e = list_next(e);
